@@ -39,12 +39,45 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 let navtags = document.querySelectorAll('header nav a');
+
 navtags[0].textContent = siteContent.nav['nav-item-1'];
 navtags[1].textContent = siteContent.nav['nav-item-2'];
 navtags[2].textContent = siteContent.nav['nav-item-3'];
 navtags[3].textContent = siteContent.nav['nav-item-4'];
 navtags[4].textContent = siteContent.nav['nav-item-5'];
 navtags[5].textContent = siteContent.nav['nav-item-6'];
+
+//.appendChild() .prepend() practice
+const first = document.createElement('a');
+first.textContent = 'First Thing';
+const last = document.createElement('a');
+last.textContent = 'Last Thing';
+
+const nav = document.querySelector('header nav');
+nav.prepend(first);
+nav.appendChild(last);
+
+//adding DOM is Awesome, IMG & button
+const ctaH1 = document.querySelector('.cta h1');
+// ctaH1.textContent = siteContent.cta['h1'];
+
+//DOM is Awesome on separate lines
+siteContent.cta.h1.split(" ")
+  .map(word => {
+    const span = document.createElement('span');
+    span.textContent = word;
+    return span;
+  })
+  .forEach(element => ctaH1.appendChild(element));
+
+document.querySelectorAll('.cta h1 span')
+  .forEach(span => span.style.display = 'block');
+
+const roundImg = document.querySelector('.cta img');
+roundImg.setAttribute('src', siteContent.cta['img-src']);
+
+const ctaButton = document.querySelector('.cta button');
+ctaButton.textContent = siteContent.cta['button'];
